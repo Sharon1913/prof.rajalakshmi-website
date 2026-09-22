@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsored Projects — Dr. P. Rajalakshmi | IIT Hyderabad</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    /* ── Project-specific ─────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 26px 24px;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition);
+      position: relative;
+      border-top: 4px solid var(--navy-light);
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-top-color: var(--gold);
+    }
+    .project-card[style*="display: none"] { display: none !important; }
+
+    .proj-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .proj-status.ongoing  { background: #d4f0e2; color: #1a6e3c; }
+    .proj-status.completed{ background: #e8eef5; color: #4a5f78; }
+    .proj-status.ongoing::before  { content:''; width:6px; height:6px; border-radius:50%; background:#1a6e3c; }
+    .proj-status.completed::before{ content:''; width:6px; height:6px; border-radius:50%; background:#4a5f78; }
+
+    .proj-role-tag {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--navy-light);
+      background: #e8f0fe;
+      border-radius: 50px;
+      padding: 3px 10px;
+      margin-bottom: 12px;
+    }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .proj-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .proj-meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: .83rem;
+      color: var(--text-light);
+    }
+    .proj-meta-row i {
+      width: 14px;
+      flex-shrink: 0;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    /* Filter tabs */
+    .filter-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .ftab {
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: .85rem;
+      font-weight: 600;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .ftab:hover, .ftab.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+    .ftab .count {
+      background: var(--bg-section);
+      color: var(--text-light);
+      border-radius: 50px;
+      padding: 1px 8px;
+      font-size: .72rem;
+    }
+    .ftab.active .count {
+      background: rgba(255,255,255,.2);
+      color: var(--white);
+    }
+
+    #no-proj {
+      display: none;
+      text-align: center;
+      padding: 64px 0;
+      color: var(--text-light);
+      grid-column: 1/-1;
+    }
+    #no-proj i { font-size: 2rem; margin-bottom: 12px; display: block; }
+  </style>
+</head>
+<body>
+
+<header id="site-header">
+  <nav class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/IITHlogo.png" alt="IIT Hyderabad">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="sponsored_projects.html" class="active">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="connect.html">Connect</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="kicker">Funded Research</span>
+    <h1>Sponsored Projects</h1>
+    <p>Government and industry-funded research projects led by Dr. P. Rajalakshmi</p>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <div class="container">
+    <a href="index.html">Home</a>
+    <span class="sep"><i class="fas fa-chevron-right" style="font-size:.65rem"></i></span>
+    <span class="current">Sponsored Projects</span>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="container">
+    <div class="stat-cell"><div class="num">25+</div><div class="lbl">Total Projects</div></div>
+    <div class="stat-cell"><div class="num">₹100Cr+</div><div class="lbl">Total Funding</div></div>
+    <div class="stat-cell"><div class="num">15</div><div class="lbl">Principal Investigator</div></div>
+    <div class="stat-cell"><div class="num">11</div><div class="lbl">Co-Investigator</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- 4 Category Tabs -->
+    <div class="filter-row">
+      <button class="ftab active" data-filter="ongoing">
+        <i class="fas fa-play-circle"></i> Ongoing Projects <span class="count">3</span>
+      </button>
+      <button class="ftab" data-filter="completed">
+        <i class="fas fa-check-circle"></i> Completed Projects <span class="count">23</span>
+      </button>
+      <button class="ftab" data-filter="government">
+        <i class="fas fa-landmark"></i> Government Funded <span class="count">18</span>
+      </button>
+      <button class="ftab" data-filter="industry">
+        <i class="fas fa-industry"></i> Industry Funded <span class="count">8</span>
+      </button>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+
+      <!-- ═══ ONGOING ═══════════════════════════════════════════════ -->
+
+      <div class="project-card reveal" data-category="ongoing government">
+        <span class="proj-status ongoing">Ongoing</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Technology Innovation HUB (TIH) on Autonomous Navigation and Acquisition Systems (UAV, RoV, etc)</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>DST's NM-ICPS</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>March 2020 to December 2027</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="ongoing government">
+        <span class="proj-status ongoing">Ongoing</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Dynamic Computational Offloading Using 6G Network</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Department of Telecommunications</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>April 2025 to April 2027</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="ongoing government">
+        <span class="proj-status ongoing">Ongoing</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Automated Pipeline for Crop Yield Enhancement, and Early Identification of Abiotic Stress Through Drone-based Hyperspectral Sensors for Smart Agriculture</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Department of Biotechnology</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>December 2024 to December 2026</span></div>
+        </div>
+      </div>
+
+      <!-- ═══ COMPLETED — INDUSTRY ════════════════════════════════ -->
+
+      <div class="project-card reveal" data-category="completed industry">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>IIT-TiHAN-Use Case Project</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Tata Technologies Limited, Pune</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>September 2023 – February 2024</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed industry">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>ADAS Project</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>L&amp;T Technology Services</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>October 2023 – March 2025</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed industry">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>CV2X Project</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>L&amp;T Technology Services</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>October 2023 – March 2025</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed industry">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Development of Autonomous Surveillance and Spraying Drone</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Air Force Academy Dindukal</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>6 months</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed industry">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>ADAS for Point-to-Point Navigation System for Autonomous Car Adaptable to Indian Scenarios</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Suzuki Motor Corporations, Japan</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>September 2021 to August 2024</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed industry">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Consultancy Services Project</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Metro Infrasys Pvt Ltd</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>August 2023 – September 2023</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed industry">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Mobile Sensor Networks Technologies</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>KDDI R&amp;D Labs, Japan</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>March 2011 to April 2015</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed industry">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>Center for Healthcare Entrepreneurship</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Raj and Avi from USA</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>3rd December 2015</span></div>
+        </div>
+      </div>
+
+      <!-- ═══ COMPLETED — GOVERNMENT ═════════════════════════════ -->
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Autonomous Navigation of Micro Aerial Vehicles in Indoor Environments</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>DYSL-AI, DRDO</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>June 2023 – May 2024</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Real-Time Edge Computing Architectures for LiDAR-based Intelligent Transportation Systems</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>MeiTY</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>February 2021 to February 2024</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>Teachers Associateship for Research Excellence (TARE)</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Science and Engineering Research Board (SERB)</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>January 2022 to January 2025</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>AI based High Throughput Phenotyping to Accelerate Crop Improvement through Crop Images Captured from UAV with On-Vehicle Sensors</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>MEITY</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>November 2018 to November 2021</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-PI</span>
+        <h3>Design and Fabrication of Passenger Drone</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>MEITY</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>15 March 2019 to 14 March 2022</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-PI</span>
+        <h3>IoT-based 3D Printed Time Lapse Smart Microscope for Embryo Monitoring in IVF Clinics</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>SERB, DST, IMPRINT</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>24 December 2018 to 24 December 2021</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>5G Testbed</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>DOT</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>2018 to April 2021</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>Data Science-based Farming Support System for Sustainable Crop Production under Climatic Change (DSFS)</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>DOT</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>6th February 2018 to 5th February 2022</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>SATREP- m2SMART</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>JICA-JST</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>May 2017 – 2022</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Principal Investigator</span>
+        <h3>IOT for Smarter Healthcare</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Department of Information and Technology (DeiTy), India</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>March 2013 to February 2016</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>Converged Cloud Communication Technologies</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>DeiTy</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>2014 to 2019</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>Cyber Physical Systems</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Department of Information and Technology (DeiTy), India</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>2011 to 2016</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>IOT-eHealth</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Department of Science and Technology (DST) under IUATC Project, India</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>October 2012 to June 2015</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>Pervasive Sensor Environment</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Department of Science and Technology (DST) under IUATC project, India</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>September 2009 to September 2012</span></div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="completed government">
+        <span class="proj-status completed">Completed</span>
+        <span class="proj-role-tag">Co-Investigator</span>
+        <h3>Cognitive Radio</h3>
+        <div class="proj-meta">
+          <div class="proj-meta-row"><i class="fas fa-building"></i><span>Department of Information and Technology (DeiTy), India</span></div>
+          <div class="proj-meta-row"><i class="fas fa-calendar"></i><span>2010 to 2013</span></div>
+        </div>
+      </div>
+
+      <div id="no-proj">
+        <i class="fas fa-folder-open"></i>
+        <p>No projects found for this filter.</p>
+      </div>
+
+    </div><!-- /.projects-grid -->
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/IITHlogo.png" alt="IIT Hyderabad" style="height:40px;filter:brightness(0) invert(1);opacity:.75;">
+        <p>Dr. P. Rajalakshmi is a Professor at IIT Hyderabad, leading research in autonomous navigation, wireless communications, and cyber-physical systems.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="publications.html">Publications</a>
+        <a href="sponsored_projects.html">Projects</a>
+        <a href="people.html">Research Team</a>
+        <a href="courses.html">Courses</a>
+        <a href="awards.html">Awards</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Room No: EE-506<br>Dept. of Electrical Engineering<br>IIT Hyderabad, Kandi<br>Sangareddy, Telangana – 502285</p>
+        <p><i class="fas fa-envelope" style="margin-right:6px;color:var(--gold-light)"></i>raji@ee.iith.ac.in</p>
+        <p><i class="fas fa-phone" style="margin-right:6px;color:var(--gold-light)"></i>+91 40 2301 7466</p>
+
+        <div class="social-row">
+          <a href="#" class="soc-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="soc-btn" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="soc-btn" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="#" class="soc-btn" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 Dr. P. Rajalakshmi · IIT Hyderabad. All rights reserved.</span>
+      <span>Dept. of Electrical Engineering</span>
+    </div>
+  </div>
+</footer>
+
+<button id="btt" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+<script src="site.js"></script>
+<script>
+(function () {
+  const tabs   = document.querySelectorAll('.ftab[data-filter]');
+  const cards  = document.querySelectorAll('.project-card[data-category]');
+  const noProj = document.getElementById('no-proj');
+
+  function applyFilter(type) {
+    let visible = 0;
+    cards.forEach(card => {
+      // data-category can be multi-value: "ongoing government"
+      const cats = card.dataset.category.split(' ');
+      const show = cats.includes(type);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    noProj.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function () {
+      tabs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      applyFilter(this.dataset.filter);
+    });
+  });
+
+  // Default: show ongoing
+  applyFilter('ongoing');
+})();
+</script>
+</body>
+</html>

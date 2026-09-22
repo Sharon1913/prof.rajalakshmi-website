@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Team — Dr. P. Rajalakshmi | IIT Hyderabad</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 1200px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px)  { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px)  { .team-grid { grid-template-columns: 1fr; } }
+
+    .member-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--navy-light);
+      box-shadow: var(--shadow-xs);
+      padding: 24px 16px 20px;
+      text-align: center;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 260px;
+      justify-content: flex-start;
+      gap: 6px;
+    }
+    .member-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-top-color: var(--gold);
+    }
+
+    .member-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--bg-section);
+      border: 3px solid var(--border);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+      font-size: 1.8rem;
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+    .member-card:hover .member-avatar { border-color: var(--gold); }
+    .member-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; border-radius: 50%;
+    }
+
+    .member-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+    .member-role {
+      font-size: .75rem;
+      color: var(--text-light);
+      font-family: monospace;
+      letter-spacing: .01em;
+    }
+    .member-research {
+      font-size: .8rem;
+      color: var(--text-mid);
+      font-style: italic;
+      line-height: 1.45;
+      flex: 1;
+    }
+    .member-status {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 3px 12px;
+      border-radius: 50px;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .status-current { background: #d4edda; color: #155724; }
+    .status-alumni  { background: #d1ecf1; color: #0c5460; }
+
+    /* Tab buttons */
+    .team-categories {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .category-btn {
+      font-family: var(--font-body);
+      font-size: .88rem;
+      font-weight: 600;
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--navy-light);
+      border-radius: 50px;
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .category-btn:hover, .category-btn.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Team sections */
+    .team-section { display: none; animation: fadeInUp .5s ease; }
+    .team-section.active { display: block; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<header id="site-header">
+  <nav class="container">
+    <a href="index.html" class="nav-logo">
+      <img src="images/IITHlogo.png" alt="IIT Hyderabad">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#research">Research</a></li>
+      <li><a href="sponsored_projects.html">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="people.html" class="active">People</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="awards.html">Awards</a></li>
+      <li><a href="connect.html">Connect</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="kicker">Lab Members</span>
+    <h1>Research Team</h1>
+    <p>Meet the talented researchers and students of the Wireless Network Lab (WiNeT)</p>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <div class="container">
+    <a href="index.html">Home</a>
+    <span class="sep"><i class="fas fa-chevron-right" style="font-size:.65rem"></i></span>
+    <span class="current">People</span>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="container">
+    <div class="stat-cell"><div class="num">65+</div><div class="lbl">M.Tech Students</div></div>
+    <div class="stat-cell"><div class="num">25+</div><div class="lbl">PhD Scholars</div></div>
+    <div class="stat-cell"><div class="num">20+</div><div class="lbl">Post Doctorates</div></div>
+    <div class="stat-cell"><div class="num">110+</div><div class="lbl">Total Members</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="team-categories">
+      <button class="category-btn active" data-category="mtech">
+        <i class="fas fa-user-graduate"></i> M.Tech Students
+      </button>
+      <button class="category-btn" data-category="phd">
+        <i class="fas fa-user-tie"></i> PhD Scholars
+      </button>
+      <button class="category-btn" data-category="postdoc">
+        <i class="fas fa-chalkboard-teacher"></i> Post Doctorates
+      </button>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         M.TECH STUDENTS
+    ═══════════════════════════════════════ -->
+    <div id="mtech" class="team-section active">
+      <div class="team-grid">
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/saurabh_dubey.jpeg"></div>
+          <div class="member-name">Mr. Saurabh Dubey</div>
+          <div class="member-role">Roll No. ai25mtech12003</div>
+          <div class="member-research">Autonomous Ground Vehicle</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="#" alt="" onerror="this.style.display='none';this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>'"></div>
+          <div class="member-name">Mr. Karthikeya</div>
+          <div class="member-role">Roll No. ee25mtech12019</div>
+          <div class="member-research">Drones</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Hemanth</div>
+          <div class="member-role">Roll No. ee25mtech12006</div>
+          <div class="member-research">Drones</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Vignesh_Photo.jpg" alt="Vignesh"></div>
+          <div class="member-name">Mr. Vignesh Ramkrishnan</div>
+          <div class="member-role">Roll No. sm25mtech12002</div>
+          <div class="member-research">LiDAR-Camera Sensor Fusion based Navigation for Autonomous Vehicles</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/mtech 69.jpg" alt="Tarun Kumar"></div>
+          <div class="member-name">Mr. Tarun Kumar</div>
+          <div class="member-role">Roll No. sm25mtech12001</div>
+          <div class="member-research">Drones</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Manikanta Sai</div>
+          <div class="member-role">Roll No. Sm24mtech14006</div>
+          <div class="member-research">Electric Vehicle</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Daniel mtech 67.jpg" alt="Daniel"></div>
+          <div class="member-name">Mr. Daniel</div>
+          <div class="member-role">Roll No. sm24mtech12002</div>
+          <div class="member-research">CAN Implementation</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Pawan.jpg" alt="Pavan"></div>
+          <div class="member-name">Mr. Pavan</div>
+          <div class="member-role">Roll No. ee24mtech12009</div>
+          <div class="member-research">BVLOS Operation</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Raju.jpg" alt="Raju S"></div>
+          <div class="member-name">Mr. Raju S</div>
+          <div class="member-role">Roll No. sm24mtech12001</div>
+          <div class="member-research">Small Drone</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Adithya Srinivas</div>
+          <div class="member-role">Roll No. ai24mtech12012</div>
+          <div class="member-research">Text Classification</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Ms. Bhavani</div>
+          <div class="member-role">Roll No. ee24mtech02001</div>
+          <div class="member-research">Autonomous Parking</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Vishnu Swathik</div>
+          <div class="member-role">Roll No. ee24mtech02004</div>
+          <div class="member-research">Real-time LiDAR and camera based navigation</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Sai Kiran</div>
+          <div class="member-role">Roll No. ai24mtech02003</div>
+          <div class="member-research">Hyperspectral image data analysis for Agriculture applications</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Yuvraj.jpeg" alt="Yuvraj"></div>
+          <div class="member-name">Mr. Yuvraj Chowdary Makkena</div>
+          <div class="member-role">Roll No. ai23mtech02003</div>
+          <div class="member-research">Building Edgecloud for Autonomous Navigation Vehicles</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Rakshith.jpg" alt="Rakshith"></div>
+          <div class="member-name">Mr. Rakshith Ram AC</div>
+          <div class="member-role">Roll No. sm22mtech12003</div>
+          <div class="member-research">Lidar and Camera based navigation for autonomous UGVs</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Samuktha.jpg" alt="Samyuktha"></div>
+          <div class="member-name">Ms. Samyuktha</div>
+          <div class="member-role">Roll No. ai23mtech02004</div>
+          <div class="member-research">Camera-Radar Fusion for enabled ADAS system</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/amith mtech 55.jpg" alt="Amit Kumar Singh"></div>
+          <div class="member-name">Mr. Amit Kumar Singh</div>
+          <div class="member-role">Roll No. ai22mtech12010</div>
+          <div class="member-research">GPS denied Navigation for UAVs</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Rishav.jpg" alt="Rishav Kumar"></div>
+          <div class="member-name">Mr. Rishav Kumar</div>
+          <div class="member-role">Roll No. ai22mtech12003</div>
+          <div class="member-research">Multi-Modal Fusion for Object Detection</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Manas.jpg" alt="Manas Upadhyaya"></div>
+          <div class="member-name">Mr. Manas Upadhyaya</div>
+          <div class="member-role">Roll No. sm22mtech12002</div>
+          <div class="member-research">Autonomous E-bike Micro Mobility</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Kshitiz.jpeg" alt="Kshitiz Kumar"></div>
+          <div class="member-name">Mr. Kshitiz Kumar</div>
+          <div class="member-role">Roll No. ai22mtech02002</div>
+          <div class="member-research">Learning Pedestrian Actions to Ensure Safe Autonomous Driving</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Anuj mtech 51.jpg" alt="Anuj Arora"></div>
+          <div class="member-name">Mr. Anuj Arora</div>
+          <div class="member-role">Roll No. sm22mtech14002</div>
+          <div class="member-research">Mapping and Navigation on roots vehicle</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Nitish.jpg" alt="Nitish Kumar"></div>
+          <div class="member-name">Mr. Nitish Kumar</div>
+          <div class="member-role">Roll No. ee22mtech02005</div>
+          <div class="member-research">Sensor Fusion and RADAR based Navigation for Autonomous Vehicles</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/tuhin.jpg" alt="Tuhin Dutta"></div>
+          <div class="member-name">Mr. Tuhin Dutta</div>
+          <div class="member-role">Roll No. ai21mtech02002</div>
+          <div class="member-research">ADAS for point navigation system for autonomous car adaptable to Indian scenarios</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Harshal.jpg" alt="Harshal Verma"></div>
+          <div class="member-name">Mr. Harshal Verma</div>
+          <div class="member-role">Roll No. ai21mtech01003</div>
+          <div class="member-research">LiDAR-Camera sensor fusion</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Shathanu.jpg" alt="Shantanu Yadav"></div>
+          <div class="member-name">Mr. Shantanu Yadav</div>
+          <div class="member-role">Roll No. ee20mtech12001</div>
+          <div class="member-research">ADAS System Design for Autonomous Vehicles using Radar Signal Processing</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Rishab.jpg" alt="Rishabh Bhardwaj"></div>
+          <div class="member-name">Mr. Rishabh Bhardwaj</div>
+          <div class="member-role">Roll No. sm21mtech12007</div>
+          <div class="member-research">Enhancing Autonomous Vehicle Capabilities: Drive-by-Wire Integration, Pedestrian Intent Estimation, and Collision Mitigation Systems Simulation in Carla</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Hari Nagaraja Srikanth</div>
+          <div class="member-role">Roll No. sm21mtech12012</div>
+          <div class="member-research">Enhancing Autonomous Vehicle Navigation with Real-Time Pothole Detection and Simulation-based Collision Warning Systems</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Deeshanth.png" alt="Deeshant Sharma"></div>
+          <div class="member-name">Mr. Deeshant Sharma</div>
+          <div class="member-role">Roll No. ee21mtech14002</div>
+          <div class="member-research">An Integrated Framework for UAVs: Localization, Mapping, and Navigation in GPS-Denied Environments</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. G Venkata Ujwal Sai</div>
+          <div class="member-role">Roll No. ai20mtech01001</div>
+          <div class="member-research">Vision based Segmentation and Navigation for Unmanned Aerial Vehicles</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Venkatesh.jpg" alt="Perabhattula Venkatesh"></div>
+          <div class="member-name">Mr. Perabhattula Venkatesh</div>
+          <div class="member-role">Roll No. ai20mtech01004</div>
+          <div class="member-research">Computer-Vision based ADAS applications for Autonomous Vehicles in India</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Vipul Kumar Malik</div>
+          <div class="member-role">Roll No. ai20mtech14006</div>
+          <div class="member-research">Auto Adjustable Traffic Controller enabled with Special Vehicle Assistance System</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Surya.png" alt="Surya Pratap Singh Shekhawat"></div>
+          <div class="member-name">Mr. Surya Pratap Singh Shekhawat</div>
+          <div class="member-role">Roll No. sm20mtech12006</div>
+          <div class="member-research">Autonomous Navigation of Drone Swarm</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Abhishek singh Mtech 24.jpeg" alt="Abhishek Singh"></div>
+          <div class="member-name">Mr. Abhishek Singh</div>
+          <div class="member-role">Roll No. sm20mtech12013</div>
+          <div class="member-research">Radar with camera integration and GPS/IMU-based navigation of the ground vehicle</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/shreeshan.jpg" alt="Shreeshan S"></div>
+          <div class="member-name">Mr. Shreeshan S</div>
+          <div class="member-role">Roll No. ee19mtech01007</div>
+          <div class="member-research">Automated plant phenotyping using UAV based RGB Images and Point Cloud data</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/subhra.jpg" alt="Subhra Shankha Bhattacherjee"></div>
+          <div class="member-name">Mr. Subhra Shankha Bhattacherjee</div>
+          <div class="member-role">Roll No. ee19mtech01008</div>
+          <div class="member-research">Automated Region of Interest Segmentation Pipeline for UAV based RGB Images</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/nikhilp.jpg" alt="Poluri Nikhil Koundinya"></div>
+          <div class="member-name">Mr. Poluri Nikhil Koundinya</div>
+          <div class="member-role">Roll No. ee18mtech11031</div>
+          <div class="member-research">Multi-Sensor Perception and Control for Autonomous Navigation</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/mrinal.jpg" alt="Mrinal Senapati"></div>
+          <div class="member-name">Mr. Mrinal Senapati</div>
+          <div class="member-role">Roll No. ee18mtech11025</div>
+          <div class="member-research">LiDAR Point Cloud Processing for Autonomous Navigation</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/vivek.jpg" alt="Vivek Barsaiyan"></div>
+          <div class="member-name">Mr. Vivek Barsaiyan</div>
+          <div class="member-role">Roll No. ee18mtech11028</div>
+          <div class="member-research">LiDAR Point Cloud Processing for Traffic Sensing</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/pradeep.jpg" alt="Pradeep Kumar Mishra"></div>
+          <div class="member-name">Mr. Pradeep Kumar Mishra</div>
+          <div class="member-role">Roll No. ee16mtech11039</div>
+          <div class="member-research">A Study of Manifold Learning Methods for Multiclass Motor Imagery Classification</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/mahesh.jpg" alt="Mahesh Taparia"></div>
+          <div class="member-name">Mr. Mahesh Taparia</div>
+          <div class="member-role">Roll No. ee18mtech11025</div>
+          <div class="member-research">Canopy Coverage Estimation &amp; Tassel Detection Using UAV-Based Remote Sensing and Crop-Weed Segmentation Using Static Images</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/durga.jpg" alt="K.V.V.Durga Prasad"></div>
+          <div class="member-name">Mr. K.V.V. Durga Prasad</div>
+          <div class="member-role">Roll No. ee14mtech11023</div>
+          <div class="member-research">Design and Development of Energy Efficient Algorithms for Smart Agriculture</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/pallavi.jpg" alt="Pallavi Vaish"></div>
+          <div class="member-name">Ms. Pallavi Vaish</div>
+          <div class="member-role">Roll No. ee15mtech01001</div>
+          <div class="member-research">Smartphone Based Automatic Diagnostic Healthcare System</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/punit.jpg" alt="Punit Kumar"></div>
+          <div class="member-name">Mr. Punit Kumar</div>
+          <div class="member-role">Roll No. ee15mtech01002</div>
+          <div class="member-research">FPGA Prototyping of Ultrasound Signal Processing and Ultrasound Front-end Processing Hardware development</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/abhishek Anand M.Tech 15.jpg" alt="Abhishek Anand"></div>
+          <div class="member-name">Mr. Abhishek Anand</div>
+          <div class="member-role">Roll No. ee14mtech11040</div>
+          <div class="member-research">Compressive Sensing Implementation In a Wireless Sensor Network Environment</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Mude Nagarjuna Naik</div>
+          <div class="member-role">Roll No. ee15mtech11007</div>
+          <div class="member-research">Design and development of Wireless Sensor Network for Real time remote monitoring</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/dileep.jpg" alt="Atche Dileepkumar"></div>
+          <div class="member-name">Mr. Atche Dileepkumar</div>
+          <div class="member-role">Roll No. ee1a4mtech01002</div>
+          <div class="member-research">IoT-Enabled Applications in Wireless Sensor Networks</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Mohammed Abdullah Zubair</div>
+          <div class="member-role">Roll No. ee14mtech01003</div>
+          <div class="member-research"></div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="/Users/TiHAN Design/Documents/PD/images/mtech_and_phd_photos/arun.jpg" alt="Arun Kumar" onerror="this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>'"></div>
+          <div class="member-name">Mr. Arun Kumar</div>
+          <div class="member-role">Roll No. ee14mtech11002</div>
+          <div class="member-research">Ultrasound Mid-end Processing on Android Platform</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Subrahmanyam Vuddagiri</div>
+          <div class="member-role">Roll No. ee14mtech11012</div>
+          <div class="member-research">Avenues in IEEE802.15.4 MAC and PHY Layers</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/divya.png" alt="K Divya Krishna"></div>
+          <div class="member-name">Ms. K Divya Krishna</div>
+          <div class="member-role">Roll No. ee13m0003</div>
+          <div class="member-research">Computer-Aided Diagnosis and Smart Video Validation on IoT-Enabled Portable Ultrasound System</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/vinod.jpg" alt="Vinod Kumar Netad"></div>
+          <div class="member-name">Mr. Vinod Kumar Netad</div>
+          <div class="member-role">Roll No. ee13m1033</div>
+          <div class="member-research">3D Localization Techniques using RSSI with a Mobile Robot</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Dusa Chandrashekar</div>
+          <div class="member-role">Roll No. ee12m1014</div>
+          <div class="member-research">Portable Ultrasound Data Acquisition System Design</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/vivek.jpg" alt="Vivek Akkala"></div>
+          <div class="member-name">Mr. Vivek Akkala</div>
+          <div class="member-role">Roll No. ee12m1041</div>
+          <div class="member-research">Computer Aided Diagnosis on customized Ultrasound Imaging system</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Malyala Pavana Ravi Sai Kiran</div>
+          <div class="member-role">Roll No. ee12m1021</div>
+          <div class="member-research">Design and Development of Smart, Intelligent &amp; IoT Enabled Remote Health Monitoring System</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Alok Kumar Bharati</div>
+          <div class="member-role">Roll No. EE09G001</div>
+          <div class="member-research">WSN Based Power Monitoring for Smart Grids</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Saambhavi V.B</div>
+          <div class="member-role">Roll No. EE10M09</div>
+          <div class="member-research">Design of Voice-Controlled Intelligent Robot</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">&mdash;</div>
+          <div class="member-role">Roll No. EE10M14</div>
+          <div class="member-research">RSSI Based Indoor Passive Localization For Intrusion Detection And Tracking</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">&mdash;</div>
+          <div class="member-role">Roll No. EE11M09</div>
+          <div class="member-research">LTE Baseband Algorithms For Uplink</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+      </div><!-- /.team-grid -->
+    </div><!-- /#mtech -->
+
+    <!-- ═══════════════════════════════════════
+         PhD SCHOLARS
+    ═══════════════════════════════════════ -->
+    <div id="phd" class="team-section">
+      <div class="team-grid">
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. M. Arvind</div>
+          <div class="member-role">Roll No. ai25resch11002</div>
+          <div class="member-research">Autonomy</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Ms. Deepsika Urmiliya</div>
+          <div class="member-role">Roll No. ai25resch11006</div>
+          <div class="member-research">Autonomy</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Palanivel</div>
+          <div class="member-role">Roll No. ee24resch14001</div>
+          <div class="member-research">Autonomy</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Mohan K R K</div>
+          <div class="member-role">Roll No. ai23resch14001</div>
+          <div class="member-research">Out of Distribution detection for Perception in Autonomous Navigation</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Abhilash PHD 24.jpg" alt="Abhilash S"></div>
+          <div class="member-name">Mr. Abhilash S</div>
+          <div class="member-role">Roll No. ee24resch11004</div>
+          <div class="member-research">Integrated Sensing and Communication (ISAC) using B5G/6G network</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. Adithya V</div>
+          <div class="member-role">Roll No. ai23resch11001</div>
+          <div class="member-research">Carla simulation</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/gurpreet.jpg" alt="Gurpreet Singh"></div>
+          <div class="member-name">Mr. Gurpreet Singh</div>
+          <div class="member-role">Roll No. id21resch11029</div>
+          <div class="member-research">Autonomous and Intelligent IoT Access Control Model</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Mr. S Abhilash</div>
+          <div class="member-role">Roll No. ai21resch11004</div>
+          <div class="member-research">Automated Driving Incorporating Naturalistic Driving Study for Futuristic Vehicles</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Annu_2 phd 23.jpg" alt="Ms. Annu"></div>
+          <div class="member-name">Ms. Annu</div>
+          <div class="member-role">Roll No. ee21resch01010</div>
+          <div class="member-research">Cooperative Intelligent Transport System Using V2X Communications</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Ms. Joyti Ganesh Kale</div>
+          <div class="member-role">Roll No. ai21resch14004</div>
+          <div class="member-research">Intelligent Transportation Systems</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Parvez.jpg" alt="Parvez Alam"></div>
+          <div class="member-name">Mr. Parvez Alam</div>
+          <div class="member-role">Roll No. ai21resch01005</div>
+          <div class="member-research">Perception using LiDAR for Autonomous Systems</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Girish.webp" alt="S Girish Ramachandruni"></div>
+          <div class="member-name">Mr. S Girish Ramachandruni</div>
+          <div class="member-role">Roll No. ee20resch14005</div>
+          <div class="member-research">Operational Data Links for UAV/UCAV</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Sandhya.jpg" alt="Sandhya Addetla"></div>
+          <div class="member-name">Ms. Sandhya Addetla</div>
+          <div class="member-role">Roll No. ai20resch14001</div>
+          <div class="member-research">Advanced Network Security Defense Systems Leveraging Big Data Analytics</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Prasanth.jpg" alt="Prasanth Kumar Duba"></div>
+          <div class="member-name">Prasanth Kumar Duba</div>
+          <div class="member-role">Roll No. ee20resch11008</div>
+          <div class="member-research">GPS-denied Navigation and Guidance of Unmanned Aerial Vehicles (UAVs)</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Abhishek Thakur</div>
+          <div class="member-role">Roll No. ee20resch11014</div>
+          <div class="member-research">Sensor Fusion for Autonomous Navigation</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/tejasri.jpg" alt="Dr. Tejasri"></div>
+          <div class="member-name">Dr. Tejasri</div>
+          <div class="member-role">Roll No. ai19resch11002</div>
+          <div class="member-research">Drone based image processing for High throughput phenotypes</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Adduru Sankar Rao</div>
+          <div class="member-role">Roll No. ee19resch11004</div>
+          <div class="member-research">Hyperspectral Imaging for High throughput phenotyping for Drone based sensing</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/sanju.jpg" alt="Dr. Sanju Kumar N T"></div>
+          <div class="member-name">Dr. Sanju Kumar N T</div>
+          <div class="member-role">Roll No. ee19resch01006</div>
+          <div class="member-research">AI Frameworks for Autonomous Passenger Drones using Lidar Sensors</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/priyanka.JPG" alt="Dr. G. Priyanka"></div>
+          <div class="member-name">Dr. G. Priyanka</div>
+          <div class="member-role">Roll No. ee18resch11007</div>
+          <div class="member-research">AI Driven High Throughput Phenotyping to Accelerate Crop Improvement through Crop-images Captured from UAV with On-Vehicle Sensors</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/bhaskar1.jpeg" alt="Dr. Bhaskar Anand"></div>
+          <div class="member-name">Dr. Bhaskar Anand</div>
+          <div class="member-role">Roll No. ee18resch11006</div>
+          <div class="member-research">AI Driven Smart and Autonomous Transportation Using LiDAR Point Cloud</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/ajay phd 11.JPG" alt="Dr. Ajay Kumar"></div>
+          <div class="member-name">Dr. Ajay Kumar</div>
+          <div class="member-role">Roll No. ee16resch01002</div>
+          <div class="member-research">High Throughput Crop Phenotyping and Management Using UAV Based Remote Sensing</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Ajay Kumar Nain</div>
+          <div class="member-role">Roll No. ee15resch11005</div>
+          <div class="member-research">Securing Internet of Things: A physical layer perspective</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/jagadish.jpg" alt="Dr. B. Jagadish"></div>
+          <div class="member-name">Dr. B. Jagadish</div>
+          <div class="member-role">Roll No. ee15resch02010</div>
+          <div class="member-research">Brain Controlled IoT Enabled Environments: Theory and Experiments</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/santhosh reddy.jpg" alt="Dr. D. Santhosh Reddy"></div>
+          <div class="member-name">Dr. D. Santhosh Reddy</div>
+          <div class="member-role">Roll No. ee12m1021</div>
+          <div class="member-research">Low-complex AI Architectures for IoT Enabled Intelligent Hand-held Ultrasound</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/sai.jpg" alt="Dr. M. P. R. Sai Kiran"></div>
+          <div class="member-name">Dr. M. P. R. Sai Kiran</div>
+          <div class="member-role">Roll No. ee15resch02002</div>
+          <div class="member-research">Modeling and Analysis of Dense Traffic IoT Networks</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Akshay.JPG" alt="Dr. Akshay Jadhav"></div>
+          <div class="member-name">Dr. Akshay Jadhav</div>
+          <div class="member-role">Roll No. ee14resch11001</div>
+          <div class="member-research">Self-sustaining IoT Networks</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/francis.JPG" alt="Dr. Francis K Joseph"></div>
+          <div class="member-name">Dr. Francis K Joseph</div>
+          <div class="member-role">Roll No. ee14resch12001</div>
+          <div class="member-research">Photoacoustic Imaging: Theory, Modelling and Experiments</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/tejasrin.jpeg" alt="Dr. M. Tejaswini"></div>
+          <div class="member-name">Dr. M. Tejaswini</div>
+          <div class="member-role">Roll No. ee13p1003</div>
+          <div class="member-research">Human Mobility Based Mobile Phone Sensing Networks</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. M. Amarlingam</div>
+          <div class="member-role">Roll No. ee13p0007</div>
+          <div class="member-research">Low-complexity Data Aggregation Methods for Energy-constrained IoT Networks using Compressed Sensing Framework</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Ramkrishna Bharath</div>
+          <div class="member-role">Roll No. ee10p006</div>
+          <div class="member-research">Computer assisted Algorithms for Ultrasound Imaging Systems</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Raja Vara Prasad</div>
+          <div class="member-role">Roll No. ee10p004</div>
+          <div class="member-research">Modified IEEE 802.15.4 MAC with Integrated State Behaviour Model for High Density Traffic IoT Applications</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+      </div><!-- /.team-grid -->
+    </div><!-- /#phd -->
+
+    <!-- ═══════════════════════════════════════
+         POST DOCTORATES
+    ═══════════════════════════════════════ -->
+    <div id="postdoc" class="team-section">
+      <div class="team-grid">
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Paraz Upadhyay</div>
+          <div class="member-role">TiHANPDF09</div>
+          <div class="member-research">Dynamic computational offloading using 6G network</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/sanju.jpg" alt="Dr. Sanju Kumar"></div>
+          <div class="member-name">Dr. Sanju Kumar</div>
+          <div class="member-role">TiHANPDF07</div>
+          <div class="member-research">Drone-Based Building Inspection, Task Management System, and Heavy Payload (PAV-2) Drone Tuning &amp; Testing</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Manoj</div>
+          <div class="member-role">TIHANPDF08</div>
+          <div class="member-research">Multi-Sensor Fusion in Autonomous Vehicles: Radar and Camera Perspective</div>
+          <span class="member-status status-current">Current</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Kratika Yadav</div>
+          <div class="member-role">TIHANPDF01</div>
+          <div class="member-research">App interface for multimodal transportation</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Phaneendra Pydimarri</div>
+          <div class="member-role">TiHANPDF03</div>
+          <div class="member-research">CV2X (TS004), 6G, MPC controller, SDV</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Korra Balu</div>
+          <div class="member-role">TiHANpdf04</div>
+          <div class="member-research">Drive-by-Wire</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Chandras Singh</div>
+          <div class="member-role">TIHANPDF05</div>
+          <div class="member-research">UAV design and development for various applications</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Shivangi Singh</div>
+          <div class="member-role">TiHANPDF06</div>
+          <div class="member-research">Testing &amp; Validation of Autonomous Ground Vehicles</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. A UG Sankar Rao</div>
+          <div class="member-role">EE25PDF01</div>
+          <div class="member-research">UAV Based Hyperspectral Image Analysis for Crop Phenotyping</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Naga Praveen Babu</div>
+          <div class="member-role">EE20PDF09</div>
+          <div class="member-research">Design and Development of Multi-modal transportation systems (AGVs, UAVs, ASVs, and AUVs)</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Amar Kumar Verma</div>
+          <div class="member-role">EE21PDF18</div>
+          <div class="member-research">ADAS and Connected Automated Vehicles Scenarios at TiHAN Testbed – Field Tests</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Saikiran</div>
+          <div class="member-role">NA</div>
+          <div class="member-research">NA</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Adarsh</div>
+          <div class="member-role">EE21PDF14</div>
+          <div class="member-research">Design and development of prototype UAV</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Akshay Kumar</div>
+          <div class="member-role">EE21PDF15</div>
+          <div class="member-research">Sensor &amp; Actuation Integration for Autonomous Navigation in Ground Vehicle</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/santhosh reddy.jpg" alt="Dr. D. Santhosh Reddy"></div>
+          <div class="member-name">Dr. D. Santhosh Reddy</div>
+          <div class="member-role">EE21PDF17</div>
+          <div class="member-research">Autonomous Ground Vehicles</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Swapna</div>
+          <div class="member-role">EE22PDF03</div>
+          <div class="member-research">Autonomous Navigation for Aerial / Ground Vehicles</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Ramarajan</div>
+          <div class="member-role">EE22PDF06</div>
+          <div class="member-research">UAV-Passenger drone</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Rahul Dubey</div>
+          <div class="member-role">EE22PDF07</div>
+          <div class="member-research">Field of View Studies / Camera Range Studies / Heavy Payload Drone / Structural Analysis of Hexaframe</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/Syam.jpg" alt="Dr. Syam Narayanan"></div>
+          <div class="member-name">Dr. Syam Narayanan</div>
+          <div class="member-role">EE22PDF08</div>
+          <div class="member-research">Autonomous navigation of UAV</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/venkat.jpg" alt="Dr. Venkata Satyanand Mutnuri"></div>
+          <div class="member-name">Dr. Venkata Satyanand Mutnuri</div>
+          <div class="member-role">EE23PDF02</div>
+          <div class="member-research">Activities and Skill Development Programs</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Swapnil Shinde</div>
+          <div class="member-role">EE23PDF03</div>
+          <div class="member-research">Campus shuttle and DBW Development</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <div class="member-name">Dr. Syed Thouheed Ahmed</div>
+          <div class="member-role">EE23PDF04</div>
+          <div class="member-research">Edge Computing</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><img src="images/mtech_and_phd_photos/bhaskar1.jpeg" alt="Dr. Bhaskar Anand"></div>
+          <div class="member-name">Dr. Bhaskar Anand</div>
+          <div class="member-role">EE23PDF06</div>
+          <div class="member-research">Real-Time Edge Computing Architectures for LiDAR based Intelligent Transportation Systems</div>
+          <span class="member-status status-alumni">Alumni</span>
+        </div>
+
+      </div><!-- /.team-grid -->
+    </div><!-- /#postdoc -->
+
+  </div><!-- /.container -->
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/IITHlogo.png" alt="IIT Hyderabad" style="height:40px;filter:brightness(0) invert(1);opacity:.75;">
+        <p>Dr. P. Rajalakshmi is a Professor at IIT Hyderabad, leading research in autonomous navigation, wireless communications, and cyber-physical systems.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="publications.html">Publications</a>
+        <a href="sponsored_projects.html">Projects</a>
+        <a href="people.html">Research Team</a>
+        <a href="courses.html">Courses</a>
+        <a href="awards.html">Awards</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Room No: EE-506<br>Dept. of Electrical Engineering<br>IIT Hyderabad, Kandi<br>Sangareddy, Telangana – 502285</p>
+        <p><i class="fas fa-envelope" style="margin-right:6px;color:var(--gold-light)"></i>raji@ee.iith.ac.in</p>
+        <p><i class="fas fa-phone" style="margin-right:6px;color:var(--gold-light)"></i>+91 40 2301 7466</p>
+
+        <div class="social-row">
+          <a href="#" class="soc-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="soc-btn" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="soc-btn" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="#" class="soc-btn" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 Dr. P. Rajalakshmi · IIT Hyderabad. All rights reserved.</span>
+      <span>Dept. of Electrical Engineering</span>
+    </div>
+  </div>
+</footer>
+
+<button id="btt" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+<script src="site.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const btns     = document.querySelectorAll('.category-btn');
+  const sections = document.querySelectorAll('.team-section');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      btns.forEach(b => b.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      this.classList.add('active');
+      document.getElementById(this.dataset.category).classList.add('active');
+      window.scrollTo({ top: document.querySelector('.team-categories').offsetTop - 100, behavior: 'smooth' });
+    });
+  });
+});
+</script>
+</body>
+</html>
